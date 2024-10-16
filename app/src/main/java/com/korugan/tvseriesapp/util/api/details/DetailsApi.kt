@@ -6,8 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface DetailsApi {
-    @GET("/show-details")
-    suspend fun getPopular(
-        @Query("q") query : String,
-    ) : Response<DetailsModel>
+    @GET("show-details")
+    suspend fun getDetails(
+        @Query("q") query: String,
+    ): Response<DetailsModel>
 }

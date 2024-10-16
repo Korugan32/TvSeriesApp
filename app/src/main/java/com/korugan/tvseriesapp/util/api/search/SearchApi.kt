@@ -6,9 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface SearchApi {
-    @GET("/search")
+    @GET("search")
     suspend fun getSearch(
-        @Query("q") query : String,
-        @Query("page") page : String,
-    ) : Response<SearchModel>
+        @Query("q") query: String,
+        @Query("page") page: String,
+    ): Response<SearchModel>
 }

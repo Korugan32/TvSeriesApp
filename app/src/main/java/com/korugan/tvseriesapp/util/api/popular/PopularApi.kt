@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PopularApi {
-    @GET("/most-popular")
+    @GET("most-popular")
     suspend fun getPopular(
         @Query("page") page: String,
     ): Response<PopularModel>
