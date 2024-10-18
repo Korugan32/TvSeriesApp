@@ -36,6 +36,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.korugan.tvseriesapp.presentation.components.movieCard.util.getAverageColor
+import com.korugan.tvseriesapp.ui.theme.OrangeDark
 import com.korugan.tvseriesapp.util.api.popular.data.PopularModel
 
 
@@ -63,7 +64,7 @@ fun ImageCard(navController: NavHostController, data: PopularModel, index: Int) 
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color.DarkGray,
+                        OrangeDark,
                         dominantColor
                     )
                 )
