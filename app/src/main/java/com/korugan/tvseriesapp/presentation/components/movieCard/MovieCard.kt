@@ -38,10 +38,11 @@ import coil.size.Size
 import com.korugan.tvseriesapp.presentation.components.movieCard.util.getAverageColor
 import com.korugan.tvseriesapp.ui.theme.OrangeDark
 import com.korugan.tvseriesapp.util.api.popular.data.PopularModel
+import com.korugan.tvseriesapp.util.api.search.data.SearchModel
 
 
 @Composable
-fun ImageCard(navController: NavHostController, data: PopularModel, index: Int) {
+fun MovieCard(navController: NavHostController, data: PopularModel, index: Int) {
 
     val defaultColor = MaterialTheme.colorScheme.secondaryContainer
 
@@ -69,7 +70,65 @@ fun ImageCard(navController: NavHostController, data: PopularModel, index: Int) 
                     )
                 )
             )
-            .clickable { navController.navigate("Details"+"?id=${data.tv_shows[index].id}") },
+            .clickable { navController.navigate("Details" + "?id=${data.tv_shows[index].id}") },
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        if (imageState is AsyncImagePainter.State.Success) {
+            dominantColor = getAverageColor(
+                imageBitmap = imageState.result.drawable.toBitmap().asImageBitmap()
+            )
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp)
+                    .height(250.dp)
+                    .clip(RoundedCornerShape(22.dp)),
+                painter = imageState.painter,
+                contentDescription = data.tv_shows[index].name,
+                contentScale = ContentScale.Crop
+            )
+        }
+        Text(
+            text = data.tv_shows[index].name,
+            color = Color.White,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 15.sp
+        )
+    }
+}
+
+@Composable
+fun MovieCard(navController: NavHostController, data: SearchModel, index: Int) {
+
+    val defaultColor = MaterialTheme.colorScheme.secondaryContainer
+
+    val imageState = rememberAsyncImagePainter(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(data.tv_shows[index].image_thumbnail_path)
+            .size(Size.ORIGINAL)
+            .build()
+    ).state
+
+    var dominantColor by remember {
+        mutableStateOf(defaultColor)
+    }
+    Column(
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        OrangeDark,
+                        dominantColor
+                    )
+                )
+            )
+            .clickable { navController.navigate("Details" + "?id=${data.tv_shows[index].id}") },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
