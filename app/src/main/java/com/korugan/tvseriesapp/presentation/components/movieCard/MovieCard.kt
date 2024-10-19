@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.vector.DefaultTintColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -36,7 +37,6 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.korugan.tvseriesapp.presentation.components.movieCard.util.getAverageColor
-import com.korugan.tvseriesapp.ui.theme.OrangeDark
 import com.korugan.tvseriesapp.util.api.popular.data.PopularModel
 import com.korugan.tvseriesapp.util.api.search.data.SearchModel
 
@@ -65,7 +65,7 @@ fun MovieCard(navController: NavHostController, data: PopularModel, index: Int) 
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        OrangeDark,
+                        DefaultTintColor,
                         dominantColor
                     )
                 )
@@ -123,7 +123,7 @@ fun MovieCard(navController: NavHostController, data: SearchModel, index: Int) {
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        OrangeDark,
+                        DefaultTintColor,
                         dominantColor
                     )
                 )
