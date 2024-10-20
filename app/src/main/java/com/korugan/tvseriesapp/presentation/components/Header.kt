@@ -25,7 +25,7 @@ fun Header(navController : NavHostController) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 25.dp)
-            .height(80.dp),
+            .height(60.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
