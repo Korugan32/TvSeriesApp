@@ -23,7 +23,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.vector.DefaultTintColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -65,7 +64,7 @@ fun MovieCard(navController: NavHostController, data: PopularModel, index: Int) 
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        DefaultTintColor,
+                        Color.DarkGray,
                         dominantColor
                     )
                 )
@@ -123,7 +122,7 @@ fun MovieCard(navController: NavHostController, data: SearchModel, index: Int) {
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        DefaultTintColor,
+                        Color.DarkGray,
                         dominantColor
                     )
                 )
