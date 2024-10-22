@@ -1,4 +1,4 @@
-package com.korugan.tvseriesapp.presentation
+package com.korugan.tvseriesapp.presentation.screens.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
