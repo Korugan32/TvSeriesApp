@@ -18,10 +18,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.DefaultTintColor
 import androidx.navigation.NavHostController
 import com.korugan.tvseriesapp.presentation.components.BottomBar
-import com.korugan.tvseriesapp.presentation.components.Header
 import com.korugan.tvseriesapp.presentation.components.movieCard.MovieCard
 import com.korugan.tvseriesapp.presentation.screens.details.DetailsViewModel
 import com.korugan.tvseriesapp.presentation.screens.details.util.detailsData
@@ -42,7 +42,6 @@ fun FavoritesScreen(navController: NavHostController, detailsViewModel: DetailsV
             Scaffold(
                 Modifier
                     .fillMaxWidth(),
-                topBar = { Header(navController) },
                 bottomBar = { BottomBar(navController) },
                 containerColor = DefaultTintColor,
             ) { innerPadding ->
@@ -51,9 +50,12 @@ fun FavoritesScreen(navController: NavHostController, detailsViewModel: DetailsV
                     modifier = Modifier.padding(innerPadding)
                 ) {
                     items(favoritesList.size) { index ->
-                        // burada bir problem var
+                        /* Burada'ki Sıkıntı DetailsModel'in her farklı id için güncellenmemesi
+                       * Kısaca [21,22] benim id'lerim olsun 21 için internetten veri çektiğinde
+                       * modelin içinde veriler tutuluyor fakat 22 için veri çekme işlemi yapmıyor
+                       * veya yapıp detailsmodel'i yeni id için güncellemiyor.(gelen id'lerde skıntı yok,
+                       * her seferinde farklı bir id geliyor.) */
                         val favoriteId = favoritesList[index].favoritesId
-                        Text(favoriteId)
                         LaunchedEffect(favoriteId) {
                             detailsViewModel.getData(favoriteId)
                         }
@@ -62,7 +64,6 @@ fun FavoritesScreen(navController: NavHostController, detailsViewModel: DetailsV
                         if (result != null) {
                             MovieCard(navController, result)
                         }
-                        Text(favoritesList[index].favoritesId)
                     }
                 }
             }
@@ -72,7 +73,8 @@ fun FavoritesScreen(navController: NavHostController, detailsViewModel: DetailsV
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Favorites Not Found")
+                Text("Favorites Not Found",color = Color.White)
+                BottomBar(navController)
             }
         }
     }
