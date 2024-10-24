@@ -68,14 +68,15 @@ fun FavoritesScreen(navController: NavHostController, detailsViewModel: DetailsV
                 }
             }
         } else {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text("Favorites Not Found",color = Color.White)
-                BottomBar(navController)
-            }
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text("Favorites Not Found", color = Color.White)
+                    BottomBar(navController)
+                }
+
         }
     }
 }

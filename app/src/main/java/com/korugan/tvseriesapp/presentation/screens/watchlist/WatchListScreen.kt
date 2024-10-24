@@ -78,8 +78,6 @@ fun WatchlistScreen(navController: NavHostController, detailsViewModel: DetailsV
                     Text("Watchlist Not Found", color = Color.White)
                     BottomBar(navController)
                 }
-
-
             }
 
         }

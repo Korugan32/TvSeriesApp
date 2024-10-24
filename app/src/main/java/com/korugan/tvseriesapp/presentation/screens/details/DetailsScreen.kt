@@ -29,7 +29,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -74,7 +73,6 @@ fun DetailsScreen(
     var dominantColor by remember { mutableStateOf(defaultColor) } //
     var isFavorite by remember { mutableStateOf(false) }
     var isWatchlist by remember { mutableStateOf(false) }
-    val favoritesList by favoritesViewModel.allFavorites.collectAsState()
     val detailsResult = detailsViewModel.details_Result.observeAsState()
     val result = detailsData(detailsResult) //
 
@@ -186,7 +184,7 @@ fun DetailsScreen(
                             Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.Center
                         ) {
-                            Text(result.tvShow.name + favoritesList, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+                            Text(result.tvShow.name, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 20.sp)
                         }
                     }
                     item {
