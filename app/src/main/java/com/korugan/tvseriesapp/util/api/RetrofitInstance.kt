@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val URL = " https://www.episodate.com/api/"
+    private const val URL = "https://www.episodate.com/api/"
 
     private fun getInstance(): Retrofit {
         return Retrofit.Builder()
