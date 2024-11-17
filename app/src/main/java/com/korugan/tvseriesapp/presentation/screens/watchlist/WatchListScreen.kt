@@ -3,7 +3,6 @@ package com.korugan.tvseriesapp.presentation.screens.watchlist
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -69,17 +68,20 @@ fun WatchlistScreen(navController: NavHostController, detailsViewModel: DetailsV
                 }
             }
         } else {
-            Column(Modifier.fillMaxSize().statusBarsPadding()) {
+            Scaffold(
+                bottomBar = { BottomBar(navController) },
+                containerColor = DefaultTintColor,
+            ) {
                 Column(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(it),
+                    verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text("Watchlist Not Found", color = Color.White)
-                    BottomBar(navController)
                 }
             }
-
         }
     }
 }
