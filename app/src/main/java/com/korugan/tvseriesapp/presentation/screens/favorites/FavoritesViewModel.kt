@@ -30,8 +30,8 @@ class FavoritesViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
-    fun insert(favorite: String) = viewModelScope.launch(Dispatchers.IO) {
-        val favorite = Favorites(favoritesId = favorite)
+    fun insert(favoriteId: String, favoriteName : String) = viewModelScope.launch(Dispatchers.IO) {
+        val favorite = Favorites(favoritesId = favoriteId,favoriteName = favoriteName)
             repository.insert(favorite)
     }
 
